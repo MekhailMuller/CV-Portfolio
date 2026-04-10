@@ -22,7 +22,7 @@ function Home() {
       <Skills />
       <Projects />
       <Chatbot />
-      <footer>© 2026 Mekhail — Built with React, Three.js & Gemini AI</footer>
+      <footer>© 2026 Mekhail — Built with React, Three.js & Cloudflare AI</footer>
     </>
   )
 }
