@@ -1,16 +1,59 @@
-# React + Vite
+# Mekhail's CV Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite portfolio site with an AI chatbot powered by Cloudflare Workers AI (`@cf/google/gemma-7b-it`). No API keys needed.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- [Node.js](https://nodejs.org/) (v20+)
+- A [Cloudflare account](https://dash.cloudflare.com/sign-up) with a verified email
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
+## Local Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Frontend only (no AI chatbot):
+```bash
+npm run dev
+```
+
+Frontend + AI chatbot (requires Cloudflare auth):
+```bash
+npx wrangler login   # one-time
+npm run build
+npm run pages:dev
+```
+
+## Deploy to Cloudflare Pages
+
+```bash
+npx wrangler login   # one-time
+npm run deploy
+```
+
+On first deploy, it will prompt you to create a new project. After that, subsequent deploys go straight through.
+
+Your site will be available at the URL printed in the output (e.g. `https://<hash>.cv-portfolio-e0l.pages.dev`).
+
+To set a custom domain, go to **Cloudflare Dashboard → Pages → cv-portfolio → Custom domains**.
+
+## Project Structure
+
+```
+src/              → React frontend (Vite)
+functions/        → Cloudflare Pages Functions (serverless)
+  api/chat.js     → AI chatbot endpoint (Workers AI)
+  context.json    → Pre-extracted PDF project documentation
+Resources/        → Source PDF documents
+public/           → Static assets
+wrangler.toml     → Cloudflare Pages config
+```
+
+## AI Chatbot
+
+The chatbot uses Cloudflare Workers AI with the `@cf/google/gemma-7b-it` model. Project documentation from the PDFs in `Resources/` is pre-extracted into `functions/context.json` and included as context in every request.
+
+Free tier: 10,000 neurons/day.

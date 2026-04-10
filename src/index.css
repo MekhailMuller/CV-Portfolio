@@ -162,7 +162,7 @@ section { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
 .chatbot-section { max-width: 800px; margin: 0 auto; padding: 5rem 3rem; }
 .chat-container {
   background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
-  overflow: hidden; height: 500px; display: flex; flex-direction: column;
+  overflow: hidden; height: 700px; display: flex; flex-direction: column;
 }
 .chat-header {
   padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);
@@ -224,6 +224,40 @@ section { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
 @keyframes bounce {
   0%, 60%, 100% { transform: translateY(0); }
   30% { transform: translateY(-6px); }
+}
+
+/* ── SAMPLE QUESTIONS ── */
+.sample-questions {
+  margin-bottom: 1.5rem; background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.5rem; overflow: hidden;
+}
+.sample-questions-title {
+  font-size: 0.95rem; font-weight: 600; margin-bottom: 1rem; text-align: left;
+}
+.sample-tabs {
+  display: flex; gap: 0.5rem; margin-bottom: 1rem; overflow-x: auto;
+  scrollbar-width: thin; -webkit-overflow-scrolling: touch; flex-wrap: nowrap;
+}
+.sample-tab {
+  padding: 0.4rem 0.9rem; border-radius: 20px; border: 1px solid var(--border);
+  background: transparent; color: var(--text-dim); font-size: 0.8rem;
+  font-family: var(--font); cursor: pointer; transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
+}
+.sample-tab:hover { border-color: var(--accent); color: var(--text); }
+.sample-tab.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.sample-list {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; max-height: 200px; overflow-y: auto;
+}
+.sample-q {
+  padding: 0.45rem 0.85rem; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--text-dim); font-size: 0.78rem;
+  font-family: var(--font); cursor: pointer; transition: all 0.2s;
+  text-align: left; line-height: 1.4;
+}
+.sample-q:hover {
+  border-color: var(--accent); color: var(--text); background: var(--bg-card-hover);
 }
 
 /* ── FOOTER ── */
